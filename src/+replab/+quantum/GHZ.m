@@ -1,13 +1,13 @@
 classdef GHZ < replab.semidirectproduct.OfCompactGroups
 % Symmetry group of the GHZ states
-    
+
     properties
         nParties % integer: Number of parties
         nLevels % integer: Number of levels for each party (=2 for qubits)
     end
-    
+
     methods
-        
+
         function self = GHZ(nParties, nLevels)
         % Constructs the GHZ group for a given number of parties and levels
         %
@@ -24,7 +24,7 @@ classdef GHZ < replab.semidirectproduct.OfCompactGroups
             self.nParties = nParties;
             self.nLevels = nLevels;
         end
-        
+
         function rho = toMatrix(self, g)
         % Returns the natural matrix action of a group element
         %
@@ -55,7 +55,7 @@ classdef GHZ < replab.semidirectproduct.OfCompactGroups
             phaseRho = self.N.toMatrix(g{2});
             rho = partyRho*levelRho*phaseRho;
         end
-        
+
         function rep = definingRep(self)
         % Returns the natural representation of this group
         %
@@ -63,7 +63,7 @@ classdef GHZ < replab.semidirectproduct.OfCompactGroups
         %   replab.Rep: The unitary natural representation
             rep = replab.Rep.lambda(self, 'C', self.N.definingRep.dimension, true, @(g) self.toMatrix(g));
         end
-        
+
     end
-    
+
 end
