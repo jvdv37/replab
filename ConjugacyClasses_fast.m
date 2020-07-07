@@ -1,5 +1,5 @@
 function class_list = ConjugacyClasses_fast(elements, generators, group)
-% generates the conjugacy classes all elements of a group
+% generates the conjugacy classes for all elements of a group
 % 
 % Orbit computation algorithm:
 % Butler, Gregory. “Orbits and Schreier Vectors.” FUNDAMENTAL ALGORITHMS FOR PERMUTATION GROUPS, 
@@ -8,11 +8,10 @@ function class_list = ConjugacyClasses_fast(elements, generators, group)
 % Args:
 %   elements (cell array): elements of the group
 %   generators (cell array): generating elements of the group
-%   group (replab Group object): group used for composition, equivalence,
-%                                   and identity
+%   group (replab Group object): the group to which elements belong
 %
 % Returns 
-%   classes (cell array or cell arrays): all conjugacy classes 
+%   classes (cell array of cell arrays): all conjugacy classes 
 %
 
 %%% Determine group type
@@ -40,7 +39,7 @@ end
 
 classes = {};
 i = 0;
-approx_class_elmts = length(elements)/2; % probably can make this smaller
+approx_class_elmts = length(elements);
 
 for d = 1:length(elements)
     if vec
